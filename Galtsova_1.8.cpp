@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cmath>
 
 using namespace std;
@@ -9,19 +9,13 @@ double trainSpeed();
 
 int main()
 {
-    setlocale(LC_ALL, "Rus");
+	setlocale(LC_ALL, "Rus");
 
 	cout << "** Программа вычисляет путь, пройденный поездом **";
 
-	double t, v, s, s1, s2, a;
-
-	cout << "\n** Введите время: ";
-
-	cin >> t;
-
-	cout << "\n** Введите постоянную скорость поезда: ";
-
-	cin >> v;
+	double s, s1, s2, a;
+	double t = time();
+	double v = trainSpeed();
 
 	/*t (время)
 
@@ -44,6 +38,8 @@ int main()
 	s2 = (a * pow(t, 2)) / 2;
 
 	s = s1 + s2;
+	
+	s = (3 * v * t) / 2;
 
 	cout << "\n** Расстояние между пунктами А и В = " << s << endl;
 }
@@ -51,7 +47,7 @@ double time()
 {
 	while (true)
 	{
-		cout << "\n ** Введите время: ";
+		cout << "\n** Введите время: ";
 		double t;
 		cin >> t;
 
@@ -65,13 +61,13 @@ double time()
 			return t;
 		}
 	}
- }
+}
 
 double trainSpeed()
 {
 	while (true)
 	{
-		cout << "\n** Введите постоянную скорость поезда: ";
+		cout << "** Введите постоянную скорость поезда: ";
 		double v;
 		cin >> v;
 
