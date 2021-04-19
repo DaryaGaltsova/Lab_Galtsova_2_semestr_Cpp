@@ -1,10 +1,12 @@
-﻿#include <iostream>
+#include <iostream>
+
 using namespace std;
 
 class DoubleFact
 {
 public:
-    void calculatingFactorial(long int n)
+    long int n;
+    void calculatingFactorial()
     {
         long double result = n;
 
@@ -25,7 +27,8 @@ int main()
     long int n = checkInput();
 
     DoubleFact add;
-    add.calculatingFactorial(n);
+    add.n = n;
+    add.calculatingFactorial();
 
     return 0;
 }
