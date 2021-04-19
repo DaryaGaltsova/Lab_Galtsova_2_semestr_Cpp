@@ -20,7 +20,7 @@ public:
 
     void ConvertAlgebraicToTrigonometricForm()
     {
-        double phi = atan(Im) / (Re) * 180.0 / PI;
+        double phi = atan(Im / Re) * 180.0 / PI;
         double p = sqrt(Re * Re + Im * Im);
 
         cout << "** Комплексное число в Тригонометрической форме: "
