@@ -1,0 +1,119 @@
+using System;
+
+namespace ConsoleApplication2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            do
+            {
+                ProgramMenu();
+
+                int menuChoice = CheckInputMenu();
+                switch (menuChoice)
+                {
+                    case 0:
+                        Console.WriteLine("Exit... ");
+                        Environment.Exit(0);
+                        break;
+
+                    case 1:
+                        Console.WriteLine("Hello World!");
+                        break;
+
+                    case 2:
+                        CalcFormula();
+                        break;
+                }
+            } while (true);
+        }
+
+        private static void ProgramMenu()
+        {
+            Console.WriteLine("[0] Exit");
+            Console.WriteLine("[1] Hello World!");
+            Console.Write("[2] Calc: (X+sqrt(Y)) / Z \n>>> ");
+        }
+
+        private static int CheckInputMenu()
+        {
+            int NumberMenu;
+
+            do
+            {
+                while (!int.TryParse(Console.ReadLine(), out NumberMenu))
+                {
+                    Console.WriteLine("ERROR: Некорректный ввод. Попробуйте снова.");
+                    ProgramMenu();
+                }
+
+                if (NumberMenu > 2 || NumberMenu < 0)
+                {
+                    Console.WriteLine("ERROR: Такого номера в меню не существует. Попробуйте снова.");
+                    ProgramMenu();
+                }
+            } while (NumberMenu > 2 || NumberMenu < 0);
+
+            return NumberMenu;
+        }
+
+        private static void CalcFormula()
+        {
+            Console.Write("Введите число X: ");
+            double X = CheckInputX();
+
+            Console.Write("Введите число Y(не меньше 0): ");
+            double Y = CheckInputY();
+
+            Console.Write("Введите число Z: ");
+            double Z = CheckInputZ();
+
+            Console.WriteLine("Ответ: {0:0.000}", ((X + Math.Sqrt(Y)) / Z));
+        }
+
+        private static double CheckInputY()
+        {
+            double Number;
+
+            do
+            {
+                while (!double.TryParse(Console.ReadLine(), out Number))
+                    Console.Write("ERROR: Некорректный ввод. Попробуйте снова.\nПопробуйте снова: ");
+
+                if (Number < 0)
+                    Console.Write("ERROR: Число должно быть => 0 .\nПопробуйте снова: ");
+
+            } while (Number < 0);
+
+            return Number;
+        }
+
+        private static double CheckInputX()
+        {
+            double Number;
+
+            while (!double.TryParse(Console.ReadLine(), out Number))
+                Console.Write("ERROR: Некорректный ввод. \nПопробуйте снова: ");
+
+            return Number;
+        }
+
+        public static double CheckInputZ()
+        {
+            double Number;
+
+            do
+            {
+                while (!double.TryParse(Console.ReadLine(), out Number))
+                    Console.Write("ERROR: Некорректный ввод. Попробуйте снова.\nПопробуйте снова: ");
+
+                if (Number == 0)
+                    Console.Write("ERROR: Число не должно быть = 0 .\nПопробуйте снова: ");
+
+            } while (Number == 0);
+
+            return Number;
+        }
+    }
+}
